@@ -1,11 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
 import SideMenu from "./SideMenu";
-
+import React, {useState} from "react";
+import CustomButton from "./components/CustomButton";
 function App() {
+    const [bgButton,setBgButton] = useState('#eee7e7');
   return (
     <div className="App">
       <SideMenu/>
+        <CustomButton color={bgButton}/>
+      <div className={'SideMenu'}>
+        <input type="range" id="backGroundColor"
+               name="backGroundColor"
+               onChange={(evt) =>
+                console.log(evt.target.value)
+              }
+               min="1" max="500"/>
+        <input type={"color"}
+          onChange={(evt)=>
+            setBgButton(evt.target.value)
+          }
+        />
+      </div>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <header>Styles: Neumorphism glassmorphism Parallax-Animation 3D-Elements</header>
@@ -22,6 +38,7 @@ function App() {
       </header>
     </div>
   );
+
 }
 
 export default App;
